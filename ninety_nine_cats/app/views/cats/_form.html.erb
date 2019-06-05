@@ -1,0 +1,60 @@
+<!--stuff here some if block-->
+<% if type == :new %>
+  <% action_url = cats_url %>
+  <% button_text = "Add your cat or I dunno"%>
+<% elsif type == :edit %>
+  <% action_url = cat_url(the_cat) %>
+  <% button_text = "Alter your cats genetics and soul/color"%>
+<% end %>
+
+
+<form action="<%= action_url%>" method = "post">
+  <% if type == :edit%>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+  <!--stuff here-->
+
+  <label> Name 
+    <input type="text" name = "cat[name]" value="<%=the_cat.name%>">
+  </label>
+
+  <br>
+
+  <label> Birth Date 
+    <input type="date" name = "cat[birth_date]" value="<%=the_cat.birth_date%>">
+  </label>
+
+  <br>
+  
+  <label> Color 
+    <select name="cat[color]">
+      <option value="black" <%= the_cat.color == "black" ? "selected" : ""%>>Black</option>
+      <option value="slightly darker black" <%= the_cat.color == "slightly darker black" ? "selected" : ""%>>slightly darker black</option>
+      <option value="calico" <%= the_cat.color == "calico" ? "selected" : ""%>>calico</option>
+      <option value="grey & white" <%= the_cat.color == "grey & white" ? "selected" : ""%>>grey & white</option>
+    </select>
+  </label>
+
+  <br>
+  
+  <label> Sex
+    <select name="cat[sex]">
+      <option value="M" <%= the_cat.sex == "M" ? "selected" : ""%> >M</option>
+      <option value="F" <%= the_cat.sex == "F" ? "selected" : ""%> >F</option>
+      <option value="X" <%= the_cat.sex == "X" ? "selected" : ""%> >X</option>
+    </select>
+  </label>
+
+  <br>
+  
+  <label>Description
+    <br>
+    <textarea name="cat[description]" value=""><%= the_cat.description %></textarea>
+  </label>
+
+  <br>
+
+  <!--stuff here change button-->
+  <input type="submit" value = "<%= button_text %>">
+
+</form>

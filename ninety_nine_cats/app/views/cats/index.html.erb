@@ -1,0 +1,25 @@
+
+<h1>totally not my actual cats</h1>
+
+
+<% #this nonsense is just code%>
+<% #= this nonsense is returnable code%>
+
+<a href="<%=new_cat_url%>">Manufacture a Cat</a>
+<ol>
+
+  <% @cats.each do |c|%>
+  <li><%=c.name%>
+    <ul>
+      <li>Color: <%=c.color%></li>
+      <li>Age&nbsp;&nbsp;&nbsp;: <%=c.age%></li>
+      <li>Sex&nbsp;&nbsp;&nbsp;: <%=c.sex%></li>
+    </ul>
+    <p><%=c.description%></p>
+  </li>
+  <%end%>
+</ol>
+
+
+
+
